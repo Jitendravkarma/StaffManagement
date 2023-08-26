@@ -1,0 +1,7 @@
+.contain {
+	text-align: center;
+	padding: 10px;
+}
+.round img{
+	border-radius: 50%;
+}
