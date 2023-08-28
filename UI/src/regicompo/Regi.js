@@ -1,6 +1,6 @@
 import './Regi.css';
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { apiuserurl } from '../apiURL';
 import { useNavigate } from 'react-router-dom';
 function Regi() {
@@ -18,6 +18,17 @@ function Regi() {
     const [spo, setSpo] = useState('');
     const [city, setCity] = useState('');
     const [add, setAdd] = useState('');
+    const [val1, setVal1] = useState(parseInt(Math.random()*10));
+    const [val2, setVal2] = useState(parseInt(Math.random()*20));
+    const [captcha, setCaptcha] = useState(val1+val2);
+    const [cap, setCap] = useState('');
+    useEffect(()=>{
+        setCaptcha(val1+val2);
+    })
+    const refCap = ()=>{
+        setVal1(parseInt(Math.random()*10));
+        setVal2(parseInt(Math.random()*20));
+    }
     const handleClick = ()=>{
     	if (name === '') {
     		setOut('Please enter your name!');
@@ -64,6 +75,12 @@ function Regi() {
     	else if (add === '') {
     		setOut('Please enter your address!');
     	}
+        else if (cap === '') {
+            setOut('Please enter captcha!');
+        }
+        else if (captcha != cap) {
+            setOut('Invalid captcha!');
+        }
     	else {
             axios.get(`${apiuserurl}fetch?email=${email}`).then((res)=>{
                 if (res.data[0].email === email) {
@@ -88,6 +105,7 @@ function Regi() {
                     setSpo('');
                     setCity('');
                     setAdd('');
+                    setCap('');
                     setTimeout(()=>{
                         navigate('/login');
                     }, 1000);
@@ -243,6 +261,13 @@ function Regi() {
                                 </div>
                                 <div className="col-12">
                                     <textarea className="form-control bg-light border-0" value={add} rows="2" placeholder="Your Address" onChange={e=>setAdd(e.target.value)}></textarea>
+                                </div>
+                                <div className="col-3">
+                                    <label className="text-white p-2" style={{"backgroundColor":"#AD2E2E"}}>{val1} + {val2} = ?</label>
+                                    <span onClick={refCap}><i className="mx-2 fa-solid text-white fa-arrows-rotate"></i></span>
+                                </div>
+                                <div className="col-12">
+                                    <input type="text" value={cap} onChange={e=>setCap(e.target.value)} className="form-control bg-light border-0" placeholder="Enter Captch" style={{"height": "55px"}}/>
                                 </div>
                                 <div className="col-12">
                                     <button className="btn btn-dark w-100 py-3" type="button" onClick={handleClick}>Submit</button>
