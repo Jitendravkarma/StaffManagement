@@ -1,4 +1,8 @@
 import './App.css';
+import axios from 'axios';
+import { Routes, Route} from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { apiuserurl, apicategoryurl, apistudenturl } from './apiURL';
 import Header from './header/Header';
 import Nav from './navi/Navi';
 import Home from './homecompo/Home';
@@ -13,7 +17,6 @@ import Logout from './logout/logout';
 import Cpass from './cpass/cpass';
 import Email from './emailverify/Email';
 import Forget from './fogetpass/Fpass';
-// import Forget from './fpass/fpass';
 import Cpro from './cpro/cpro';
 import Category from './category/cat';
 import Admin from './admin/admin';
@@ -23,12 +26,30 @@ import User from './user/user';
 import Studentregi from './Studentregi/Studentregi';
 import Upload from './uploadphoto/Upload';
 import Footer from './footer/Footer';
-import { useState } from 'react';
-import { Routes, Route} from 'react-router-dom';
 function App() {
 	const [email, setEmail] = useState('vimplaconvent@gmail.com');
 	const [add, setAdd] = useState('Sanawad');
 	const [phone, setPhone] = useState('+91-99887-76655');
+	const [user, setUser] = useState([]);
+	const [img, setImg] = useState([]);
+	const [ student, setStudent ] = useState([]);
+	useEffect(()=>{
+		axios.get(apiuserurl+'fetch?role=user').then((res)=>{
+			setUser(res.data);
+		}).catch(()=>{
+			console.log('');
+		});
+		axios.get(apicategoryurl+'fetch').then((res)=>{
+			setImg(res.data);
+		}).catch(()=>{
+			console.log('');
+		});
+		axios.get(`${apistudenturl}fetch?role=student`).then((res)=>{
+			setStudent(res.data);
+		}).catch(()=>{
+			console.log('Response not get');
+		});
+	});
   return (
     <div>
 	    <Header add={add} phone={phone} email={email}/>
@@ -48,11 +69,11 @@ function App() {
 	    		<Route path="/forget-password" element={<Forget/>}></Route>
 	    	<Route path="/profile" element={<Cpro/>}></Route>
 	    	<Route path="/admin" element={<Admin/>}></Route>
-	    		<Route path="/teacherstaff" element={<Staff/>}></Route>
+	    		<Route path="/teacherstaff" element={<Staff user={user} img={img}/>}></Route>
 	    		<Route path="/studentresult" element={<Result/>}></Route>
-	    	<Route path="/user" element={<User/>}></Route>
+	    	<Route path="/user" element={<User img={img}/>}></Route>
 	    		<Route path="/studentregistration" element={<Studentregi/>}></Route>
-	    		<Route path="/managestudents" element={<ManageStudent/>}></Route>
+	    		<Route path="/managestudents" element={<ManageStudent student={student}/>}></Route>
 	    		<Route path="/uploadphoto" element={<Upload/>}></Route>
 	    </Routes>
 	    <Footer add={add} phone={phone} email={email}/>

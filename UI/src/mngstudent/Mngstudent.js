@@ -1,17 +1,6 @@
 import './Mngstudent.css';
-import { useState, useEffect } from 'react';
-import { apistudenturl } from '../apiURL';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-export default function Mngstudent() {
-	const [ student, setStudent ] = useState([]);
-	useEffect(()=>{
-		axios.get(`${apistudenturl}fetch?role=student`).then((res)=>{
-			setStudent(res.data);
-		}).catch(()=>{
-			console.log('Response not get');
-		});
-	});
+export default function Mngstudent(props) {
+	
 	return(
 		<>
 			<div className="contain">
@@ -91,7 +80,7 @@ export default function Mngstudent() {
 					</thead>
 					<tbody>
 						{
-							student.map((data)=>(
+							props.student.map((data)=>(
 								(data.class === localStorage.getItem("class") && data.branch === "") &&
 								<tr key={data._id}>
 									<td>{data.roll}</td>
@@ -110,7 +99,7 @@ export default function Mngstudent() {
 							))
 						}
 						{
-							student.map((data)=>(
+							props.student.map((data)=>(
 								((data.class === "11th" || data.class === "12th") && data.branch === localStorage.getItem("branch")) &&
 								<tr key={data._id}>
 									{
