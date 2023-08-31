@@ -31,8 +31,8 @@ export default function Mngstudent() {
 							{
 								(localStorage.getItem("class")==="11th" || localStorage.getItem("class")==="12th") &&
 								<>
-									<th colSpan="5">Marks</th>
 									<th rowSpan="2">Student Branch</th>
+									<th colSpan="5">Marks</th>
 								</>
 							}
 							<th rowSpan="2">Address</th>
