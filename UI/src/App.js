@@ -20,6 +20,7 @@ import Forget from './fogetpass/Fpass';
 import Cpro from './cpro/cpro';
 import Category from './category/cat';
 import Admin from './admin/admin';
+import AdminStudent from './adminstudent/AdminStudent';
 import Staff from './staff/Staff';
 import Result from './Studentres/Result';
 import User from './user/user';
@@ -62,6 +63,7 @@ function App() {
 	    	<Route path="/register" element={<Registration/>}></Route>
 	    	<Route path="/login" element={<Login/>}></Route>
 	    		<Route path="/manageuser" element={<ManageUser/>}></Route>
+	    		<Route path="/studentdetails" element={<AdminStudent student={student}/>}></Route>
 	    		<Route path="/addcategory" element={<Category/>}></Route>
 	    		<Route path="/logout" element={<Logout/>}></Route>
 	    		<Route path="/password" element={<Cpass/>}></Route>

@@ -8,7 +8,9 @@ function Cpro() {
 	const [ mobile , setMobile ] = useState();
 	const [ address , setAddress ] = useState();
 	const [ city , setCity ] = useState();
-	const [ gender , setGender ] = useState();  
+	const [ gender , setGender ] = useState();
+  const [ mry, setMry ] = useState('');
+  const [ spo, setSpo ] = useState('');
 	const [ userDetails , setUserDetails ] = useState([]);
   useEffect(()=>{
       axios.get(apiuserurl+"fetch?email="+localStorage.getItem("email")).then((response)=>{
@@ -20,7 +22,7 @@ function Cpro() {
       });    
   },[]);
 	const handleSubmit=()=>{
-		const updateDetails={"condition_obj":{"email":localStorage.getItem("email")},"set_condition":{"name":name,"mobile":mobile,"address":address,"city":city,"gender":gender}};
+		const updateDetails={"condition_obj":{"email":localStorage.getItem("email")},"set_condition":{"name":name,"mobile":mobile,"address":address,"city":city,"gender":gender,"marital":mry,"spouse":spo}};
 		axios.patch(apiuserurl+"update",updateDetails).then((response)=>{
 		    setOutput("Profile edited successfully....");
 		}).catch((err)=>{
@@ -50,6 +52,22 @@ function Cpro() {
             </div>
             <br/>
             <div className="form-group">
+                <label htmlFor="address">Marital Status:</label>
+                <select className="form-select" value={mry} onChange={e=>setMry(e.target.value)} style={{"height": "55px"}}>
+                    <option value='0' defaultValue>Marital Status</option>
+                    <option>Unmarried</option>
+                    <option>Married</option>
+                </select>
+            </div>
+            {
+                mry ==="Married" &&
+                <div className="form-group my-2">
+                    <label htmlFor="address">Spouse Name:</label>
+                    <input type="text" value={spo} onChange={e=>setSpo(e.target.value)} className="form-control" placeholder="Spouse name" style={{"height": "55px"}}/>
+                </div>
+            }
+            <br/>
+            <div className="form-group">
               <label htmlFor="city">City:</label>
               <select className="form-control" value={city} onChange={ e => setCity(e.target.value) } >
               <option>Select City</option>
@@ -59,7 +77,7 @@ function Cpro() {
               </select>
             </div>
             <br/>
-              <div className="form-group">
+            <div className="form-group">
               <label htmlFor="gender">Gender:</label>
               &nbsp;&nbsp;
               <input type="radio" checked name="gender" value="male" onChange={ e => setGender(e.target.value) } />
@@ -68,6 +86,7 @@ function Cpro() {
               <input type="radio" name="gender" value="female" onChange={ e => setGender(e.target.value) } />
               &nbsp;Female
             </div>
+
             <br/>  
             <button onClick={handleSubmit} type="button" className="btn btn-success">Save</button>
           </form>

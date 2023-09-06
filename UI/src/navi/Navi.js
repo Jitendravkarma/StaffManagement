@@ -17,6 +17,7 @@ function Nav() {
                                 <div className="navbar-nav ms-auto py-0">
                                     <Link to="/admin" className="nav-item nav-link">Home</Link>
                                     <Link to="/manageuser" className="nav-item nav-link">Manage Users</Link>
+                                    <Link to="/studentdetails" className="nav-item nav-link">Manage Students</Link>
                                     <Link to="/addcategory" className="nav-item nav-link">Add Category</Link>
                                     <div className="nav-item dropdown">
                                         <Link data-bs-toggle="dropdown" to="" className="nav-link dropdown-toggle">Update Profile</Link>
