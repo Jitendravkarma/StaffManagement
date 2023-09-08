@@ -1,6 +1,24 @@
 import './Mngstudent.css';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { apistudenturl } from '../apiURL';
 export default function Mngstudent(props) {
-	
+	useEffect(()=>{
+		axios.get(`${apistudenturl}fetch?role=student`).then((res)=>{
+			setStudent(res.data);
+		}).catch(()=>{
+			console.log('Response not get');
+		});
+	});
+	const navigate = useNavigate();
+	const [student, setStudent] = useState([]);
+	const deleteRecord = (id)=>{
+		const delStudent = {"data":{"_id":id}};
+		axios.delete(apistudenturl+"delete", delStudent).then((res)=>{
+			navigate('/managestudents');
+		});
+	}
 	return(
 		<>
 			<div className="contain">
@@ -24,7 +42,9 @@ export default function Mngstudent(props) {
 									<th colSpan="5">Marks</th>
 								</>
 							}
+							<th rowSpan="2">Total</th>
 							<th rowSpan="2">Address</th>
+							<th rowSpan="2">Delete Record</th>
 						</tr>
 						{
 							(localStorage.getItem("class") === "9th" || localStorage.getItem("class") === "10th") &&
@@ -94,7 +114,11 @@ export default function Mngstudent(props) {
 									<td>{data.social}</td>
 									<td>{data.science}</td>
 									<td>{data.sanskrit}</td>
+									<td>{data.total}</td>
 									<td>{data.address}</td>
+									<td>
+										<a onClick={()=>{deleteRecord(data._id)}}>Del</a>
+									</td>
 								</tr>
 							))
 						}

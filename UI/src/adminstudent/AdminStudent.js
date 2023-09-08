@@ -15,71 +15,53 @@ export default function Mngstudent(props) {
 						<option>12th</option>
 					</select>
 				</form>
-				<table cellPadding="5" border="2" align="center" className="table-bordered">
+				<div className="container">
+					<div className="row">
+						<div className="col-4">
+							
+						</div>
+						<div className="col-4" style={{"border":"1px solid","padding":"10px"}}>
+							<h3 className="bg-secondary text-light">1st Rank</h3>
+							<h4>Student Name:- Jitendra</h4>
+							<h4>Roll Number:- 4</h4>
+						</div>
+						<div className="col-4">
+							
+						</div>
+						<div className="col-2">
+							
+						</div>
+						<div className="col-4" style={{"border":"1px solid","padding":"10px"}}>
+							<h3 className="bg-secondary text-light">2nd Rank</h3>
+							<h4>Student Name:- Mukesh</h4>
+							<h4>Roll Number:- 10</h4>
+						</div>
+						<div className="col-4" style={{"border":"1px solid","padding":"10px"}}>
+							<h3 className="bg-secondary text-light">3rd Rank</h3>
+							<h4>Student Name:- Rajendra</h4>
+							<h4>Roll Number:- 2</h4>
+						</div>
+						<div className="col-2">
+							
+						</div>
+						<div className="col-12" style={{"textAlign":"left","border":"1px solid","padding":"10px"}}>
+							<h4 className="bg-secondary text-light">4th Rank</h4>
+							<h5>Student Name:- Rajiv</h5>
+							<h5>Roll Number:- 5</h5>
+						</div>
+					</div>
+				</div>
+				{/*<table cellPadding="5" border="2" align="center" className="table-bordered">
 					<thead>
 						<tr>
-							<th rowSpan="2">Roll</th>
-							<th rowSpan="2">Name</th>
-							<th rowSpan="2">Mobile</th>
-							<th rowSpan="2">Gender</th>
-							<th rowSpan="2">Class</th>
-							{
-								(cls === "9th" || cls === "10th") &&
-								<th colSpan="6">Marks</th>
-							}
-							{
-								(cls === "11th" || cls === "12th") &&
-								<>
-									<th rowSpan="2">Branch</th>
-									<th colSpan="5">Marks</th>
-								</>
-							}
-							<th rowSpan="2">Address</th>
+							<th>1st Rank</th>
 						</tr>
 					</thead>
 					<tbody>
-						{
-							props.student.map((data)=>(
-								(cls === data.class) && 
-								<tr key={data._id}>
-									<td>{data.roll}</td>
-									<td>{data.name}</td>
-									<td>{data.mobile}</td>
-									<td>{data.gender}</td>
-									<td>{data.class}</td>
-									<td>{data.hindi}</td>
-									<td>{data.english}</td>
-									{
-										data.branch === "" &&
-										<>
-											<td>{data.maths}</td>
-											<td>{data.social}</td>
-											<td>{data.science}</td>
-											<td>{data.sanskrit}</td>
-										</>
-									}
-									{
-										data.branch === "Maths" &&
-										<>
-											<td>{data.maths}</td>
-											<td>{data.physics}</td>
-											<td>{data.chemistry}</td>
-										</>
-									}
-									{
-										data.branch === "Biology" &&
-										<>
-											<td>{data.biology}</td>
-											<td>{data.physics}</td>
-											<td>{data.chemistry}</td>
-										</>
-									}
-									<td>{data.address}</td>
-								</tr>
-							))
-						}
+
 					</tbody>
 				</table>
+				*/}
 			</div>
 		</>
 	);

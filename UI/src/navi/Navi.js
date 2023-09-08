@@ -94,6 +94,7 @@ function Nav() {
                                     <Link to="/courses" className="nav-item nav-link">Courses</Link>
                                     <Link to="/teacherstaff" className="nav-item nav-link">Teachers Staff</Link>
                                     <Link to="/studentresult" className="nav-item nav-link">Search Student Result</Link>
+                                    <Link to="/topstudent" className="nav-item nav-link">Top 3</Link>
                                     {/*<div className="nav-item dropdown">
                                         <Link data-bs-toggle="dropdown" to="" className="nav-link dropdown-toggle">Pages</Link>
                                         <div className="dropdown-menu m-0">

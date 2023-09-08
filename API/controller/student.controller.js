@@ -32,7 +32,7 @@ export const fetch=async (req,res,next)=>{
 export const deleteUser=async(req,res,next)=>{
   var condition_obj=req.body;          
   var student = await StudentSchemaModel.find(condition_obj);
-  if(user.length!=0){
+  if(student.length!=0){
     let result = await StudentSchemaModel.deleteMany(condition_obj); 
     if(result)
      return res.status(201).json({"msg":"record deleted successfully...."});

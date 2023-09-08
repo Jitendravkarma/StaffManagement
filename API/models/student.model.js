@@ -36,89 +36,93 @@ const StudentSchema = mongoose.Schema({
     trim: true
   },
   hindi: {
-    type: String,
+    type: Number,
     required: [true,"Hindi marks is required"],
     maxlength: 100,
     minlength:0,
     trim: true
   },
   english: {
-    type: String,
+    type: Number,
     required: [true,"English marks is required"],
     maxlength: 100,
     minlength:0,
     trim: true
   },
   maths: {
-    type: String,
+    type: Number,
     maxlength: 100,
     minlength:0,
     trim: true
   },
   social: {
-    type: String,
+    type: Number,
     maxlength: 100,
     minlength:0,
     trim: true
   },
   science: {
-    type: String,
+    type: Number,
     maxlength: 100,
     minlength:0,
     trim: true
   },
   sanskrit: {
-    type: String,
+    type: Number,
     maxlength: 100,
     minlength:0,
     trim: true
   },
   biology: {
-    type: String,
+    type: Number,
     maxlength: 100,
     minlength:0,
     trim: true
   },
   physics: {
-    type: String,
+    type: Number,
     maxlength: 100,
     minlength:0,
     trim: true
   },
   chemistry: {
-    type: String,
+    type: Number,
     maxlength: 100,
     minlength:0,
     trim: true
   },
   account: {
-    type: String,
+    type: Number,
     maxlength: 100,
     minlength:0,
     trim: true
   },
   business: {
-    type: String,
+    type: Number,
     maxlength: 100,
     minlength:0,
     trim: true
   },
   economics: {
-    type: String,
+    type: Number,
     maxlength: 100,
     minlength:0,
     trim: true
   },
   history: {
-    type: String,
+    type: Number,
     maxlength: 100,
     minlength:0,
     trim: true
   },
   political: {
-    type: String,
+    type: Number,
     maxlength: 100,
     minlength:0,
+    trim: true
+  },
+  total: {
+    type: Number,
     trim: true
   },
   address: {

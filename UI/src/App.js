@@ -25,6 +25,7 @@ import Staff from './staff/Staff';
 import Result from './Studentres/Result';
 import User from './user/user';
 import Studentregi from './Studentregi/Studentregi';
+import TopStudent from './topstudent/Topstudent';
 import Upload from './uploadphoto/Upload';
 import Footer from './footer/Footer';
 function App() {
@@ -33,7 +34,15 @@ function App() {
 	const [phone, setPhone] = useState('+91-99887-76655');
 	const [user, setUser] = useState([]);
 	const [img, setImg] = useState([]);
-	const [ student, setStudent ] = useState([]);
+	const [student, setStudent] = useState([]);
+	let total = 0;
+	let ave = 0;
+	const marks = student.map((data)=>{
+		if (data.roll === 2 && data.class === "9th") {
+			total += Number(data.hindi) + Number(data.english) + Number(data.maths) + Number(data.social) + Number(data.science) + Number(data.sanskrit);
+			ave = total / 6;
+		}
+	});
 	useEffect(()=>{
 		axios.get(apiuserurl+'fetch?role=user').then((res)=>{
 			setUser(res.data);
@@ -75,6 +84,7 @@ function App() {
 	    		<Route path="/studentresult" element={<Result/>}></Route>
 	    	<Route path="/user" element={<User img={img}/>}></Route>
 	    		<Route path="/studentregistration" element={<Studentregi/>}></Route>
+	    		<Route path="/topstudent" element={<TopStudent student={student} ave={ave}/>}></Route>
 	    		<Route path="/managestudents" element={<ManageStudent student={student}/>}></Route>
 	    		<Route path="/uploadphoto" element={<Upload/>}></Route>
 	    </Routes>

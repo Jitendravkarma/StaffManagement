@@ -28,6 +28,7 @@ export default function Student() {
     const [political, setPolitical] = useState('');
     const [history, setHistory] = useState('');
     const [farm, setFarm] = useState('');
+    let total = 0;
     //--------end subject--------------
     const [add, setAdd] = useState('');
     const handleClick = ()=>{
@@ -55,10 +56,47 @@ export default function Student() {
     	else if (add === '') {
     		setOut('Please enter student address!');
     	}
+    	else if (hindi === '') {
+    		setOut('Please enter hindi marks!');
+    	}
+    	else if (hindi > 100) {
+    		setOut('Invalid hindi marks!');
+    	}
+    	else if (english === '') {
+    		setOut('Please enter english marks!');
+    	}
+    	else if (english > 100) {
+    		setOut('Invalid hindi marks!');
+    	}
+    	else if (math === '') {
+    		setOut('Please enter maths marks!');
+    	}
+    	else if (math > 100) {
+    		setOut('Invalid maths marks!');
+    	}
+    	else if (social === '') {
+    		setOut('Please enter social science marks!');
+    	}
+    	else if (social > 100) {
+    		setOut('Invalid social science marks!');
+    	}
+    	else if (science === '') {
+    		setOut('Please enter science marks!');
+    	}
+    	else if (science > 100) {
+    		setOut('Invalid science marks!');
+    	}
+    	else if (sanskrit === '') {
+    		setOut('Please enter sanskrit marks!');
+    	}
+    	else if (sanskrit > 100) {
+    		setOut('Invalid sanskrit marks!');
+    	}
     	else {
     		let studentDetails={};
             if (localStorage.getItem("class")==="9th" || localStorage.getItem("class")==="10th") {
-            	studentDetails = {'roll':roll,'name':name,'mobile':mobile,'gender':gen,'class':cls,'branch':brn,'hindi':hindi,'english':english,'maths':math,'social':social,'science':science,'sanskrit':sanskrit,'address':add};
+            	total = Number(hindi)+Number(english)+Number(math)+Number(social)+Number(science)+Number(sanskrit);
+            	studentDetails = {'roll':roll,'name':name,'mobile':mobile,'gender':gen,'class':cls,'branch':brn,'hindi':hindi,'english':english,'maths':math,'social':social,'science':science,'sanskrit':sanskrit,'total':total,'address':add};
             }
             else if ((localStorage.getItem("class")==="11th" || localStorage.getItem("class")==="12th") && localStorage.getItem("branch")==="Maths") {
             	studentDetails = {'roll':roll,'name':name,'mobile':mobile,'gender':gen,'class':cls,'branch':brn,'hindi':hindi,'english':english,'maths':math,'physics':phy,'chemistry':che,'address':add};
@@ -72,19 +110,23 @@ export default function Student() {
             else if ((localStorage.getItem("class")==="11th" || localStorage.getItem("class")==="12th") && localStorage.getItem("branch")==="Arts") {
             	studentDetails = {'roll':roll,'name':name,'mobile':mobile,'gender':gen,'class':cls,'branch':brn,'hindi':hindi,'english':english,'history':history,'political':political,'economics':economic,'address':add};
             }
-            axios.post(apistudenturl+'save', studentDetails).then(()=>{
-                setOut('Student record registered!');
-                setRoll('');
-                setName('');
-                setMobile('');
-                setGen('');
-                setCls('');
-                setBrn('');
-                setAdd('');
-                setTimeout(()=>{
-                    navigate('/managestudents');
-                }, 1000);
-            });
+            axios.get(apistudenturl+'fetch?roll='+roll).then(()=>{
+            	setOut(`This roll number already exist!`);
+            }).catch(()=>{
+            	axios.post(apistudenturl+'save', studentDetails).then(()=>{
+	                setOut('Student record registered!');
+	                setRoll('');
+	                setName('');
+	                setMobile('');
+	                setGen('');
+	                setCls('');
+	                setBrn('');
+	                setAdd('');
+	                setTimeout(()=>{
+	                    navigate('/managestudents');
+	                }, 1000);
+	            });
+            })
     	}
     }
 	return (

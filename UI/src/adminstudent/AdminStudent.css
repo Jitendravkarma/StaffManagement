@@ -1,0 +1,16 @@
+/*.boxes {
+	width: 40%;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+.box {
+	border: 1px solid;
+	padding: 10px;
+}
+.box1 {
+	flex-basis: 100%;
+}
+.box2, .box3 {
+	flex-basis: 48%;
+}*/
