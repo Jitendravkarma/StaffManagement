@@ -79,7 +79,7 @@ export default function Login() {
 					else {
 						let check = prompt("Your account is not verified, enter your email to verify your account!");
 						let update = {"condition_obj":{"email":email},"set_condition":{status:1}};
-						if (check == res.data[0].email) {
+						if (check === res.data[0].email) {
 							axios.patch(`${apiuserurl}update`, update).then(()=>{
 								setOut("Account verified successfully try to login!");
 							});
@@ -110,7 +110,7 @@ export default function Login() {
 		  <div className="container h-custom">
 		    <div className="row d-flex justify-content-center align-items-center h-100">
 		      <div className="col-md-9 col-lg-6 col-xl-5">
-		        <img src="assets/img/login.png" className="img-fluid" alt="Sample image"/>
+		        <img src="assets/img/login.png" className="img-fluid" alt="Sampleimage"/>
 		      </div>
 		      <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
 		        <form>

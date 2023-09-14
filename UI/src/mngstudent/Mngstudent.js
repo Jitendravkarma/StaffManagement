@@ -117,7 +117,7 @@ export default function Mngstudent(props) {
 									<td>{data.total}</td>
 									<td>{data.address}</td>
 									<td>
-										<a onClick={()=>{deleteRecord(data._id)}}>Del</a>
+										<button type="button" className="btn btn-danger" onClick={()=>{deleteRecord(data._id)}}>Delete</button>
 									</td>
 								</tr>
 							))
@@ -172,7 +172,7 @@ export default function Mngstudent(props) {
 											<td>{data.total}</td>
 											<td>{data.address}</td>
 											<td>
-												<a onClick={()=>{deleteRecord(data._id)}}>Del</a>
+												<button type="button" className="btn btn-danger" onClick={()=>{deleteRecord(data._id)}}>Delete</button>
 											</td>
 										</>
 									}

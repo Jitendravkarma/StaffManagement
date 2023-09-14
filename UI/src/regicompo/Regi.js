@@ -102,7 +102,7 @@ function Regi() {
                 if (res.data[0].email === email) {
                     setOut("Email is already registered!");
                 }
-                else if (res.data[0].mobile== mobile) {
+                else if (res.data[0].mobile=== mobile) {
                     setOut("Mobile is already registered!");
                 }
             }).catch(()=>{
