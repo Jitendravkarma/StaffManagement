@@ -15,9 +15,6 @@ export default function Login() {
 	const [ pass, setPass] = useState('');
 	const [ captcha, setCaptcha ] = useState(`${String.fromCharCode((parseInt(Math.random() * 26) + 65))}${parseInt(Math.random()*65465.5465)}${String.fromCharCode((parseInt(Math.random() * 26) + 65))}`);
 	const [ cap, setCap] = useState('');
-	setInterval(()=>{
-		setCaptcha(`${String.fromCharCode((parseInt(Math.random() * 26) + 65))}${parseInt(Math.random()*65465.5465)}${String.fromCharCode((parseInt(Math.random() * 26) + 65))}`);
-	}, 60000);
 	const refCap = ()=>{
 		setCaptcha(`${String.fromCharCode((parseInt(Math.random() * 26) + 65))}${parseInt(Math.random()*65465.5465)}${String.fromCharCode((parseInt(Math.random() * 26) + 65))}`);
 	}

@@ -56,41 +56,50 @@ export default function Student() {
     	else if (add === '') {
     		setOut('Please enter student address!');
     	}
-    	else if (hindi === '') {
+    	else if (hindi === '' && (localStorage.getItem("class")==="9th" || localStorage.getItem("class")==="10th" ||
+    		localStorage.getItem("class")==="11th" || localStorage.getItem("class")==="12th")) {
     		setOut('Please enter hindi marks!');
     	}
     	else if (hindi > 100) {
     		setOut('Invalid hindi marks!');
     	}
-    	else if (english === '') {
+    	else if (english === '' && (localStorage.getItem("class")==="9th" || localStorage.getItem("class")==="10th" ||
+    		localStorage.getItem("class")==="11th" || localStorage.getItem("class")==="12th")) {
     		setOut('Please enter english marks!');
     	}
     	else if (english > 100) {
     		setOut('Invalid hindi marks!');
     	}
-    	else if (math === '') {
+		else if (math === '' && ((localStorage.getItem("class") === "9th" || localStorage.getItem("class") === "10th") || ((localStorage.getItem("class") === "11th" || localStorage.getItem("class") === "12th") && localStorage.getItem("branch") === "Maths")))
+		{
     		setOut('Please enter maths marks!');
     	}
     	else if (math > 100) {
     		setOut('Invalid maths marks!');
     	}
-    	else if (social === '') {
+    	else if (social === '' && (localStorage.getItem("class") === "9th" || localStorage.getItem("class") === "10th")) {
     		setOut('Please enter social science marks!');
     	}
     	else if (social > 100) {
     		setOut('Invalid social science marks!');
     	}
-    	else if (science === '') {
+    	else if (science === '' && (localStorage.getItem("class") === "9th" || localStorage.getItem("class") === "10th")) {
     		setOut('Please enter science marks!');
     	}
     	else if (science > 100) {
     		setOut('Invalid science marks!');
     	}
-    	else if (sanskrit === '') {
+    	else if (sanskrit === '' && (localStorage.getItem("class") === "9th" || localStorage.getItem("class") === "10th")) {
     		setOut('Please enter sanskrit marks!');
     	}
     	else if (sanskrit > 100) {
     		setOut('Invalid sanskrit marks!');
+    	}
+    	else if (phy === '' && ((localStorage.getItem("class") === "11th" || localStorage.getItem("class") === "12th") && (localStorage.getItem("branch") === "Maths" || localStorage.getItem("branch") === "Biology"))) {
+    		setOut('Please enter physics marks!');
+    	}
+    	else if (che === '' && ((localStorage.getItem("class") === "11th" || localStorage.getItem("class") === "12th") && (localStorage.getItem("branch") === "Maths" || localStorage.getItem("branch") === "Biology"))) {
+    		setOut('Please enter chemistry marks!');
     	}
     	else {
     		let studentDetails={};
@@ -99,7 +108,8 @@ export default function Student() {
             	studentDetails = {'roll':roll,'name':name,'mobile':mobile,'gender':gen,'class':cls,'branch':brn,'hindi':hindi,'english':english,'maths':math,'social':social,'science':science,'sanskrit':sanskrit,'total':total,'address':add};
             }
             else if ((localStorage.getItem("class")==="11th" || localStorage.getItem("class")==="12th") && localStorage.getItem("branch")==="Maths") {
-            	studentDetails = {'roll':roll,'name':name,'mobile':mobile,'gender':gen,'class':cls,'branch':brn,'hindi':hindi,'english':english,'maths':math,'physics':phy,'chemistry':che,'address':add};
+            	total = Number(hindi)+Number(english)+Number(math)+Number(phy)+Number(che);
+            	studentDetails = {'roll':roll,'name':name,'mobile':mobile,'gender':gen,'class':cls,'branch':brn,'hindi':hindi,'english':english,'maths':math,'physics':phy,'chemistry':che,'total':total,'address':add};
             }
             else if ((localStorage.getItem("class")==="11th" || localStorage.getItem("class")==="12th") && localStorage.getItem("branch")==="Biology") {
             	studentDetails = {'roll':roll,'name':name,'mobile':mobile,'gender':gen,'class':cls,'branch':brn,'hindi':hindi,'english':english,'biology':bio,'physics':phy,'chemistry':che,'address':add};

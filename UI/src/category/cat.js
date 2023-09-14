@@ -11,8 +11,8 @@ function Category() {
 	}
 	return (
 		<div className="content">
-			<h1>Add Category</h1>
-			<form>
+			<h1 className="w-50 m-auto">Add Category</h1>
+			<form className="w-50 m-auto">
 				<div className="form-group">
 					<label htmlFor="catname" className="">Category Name: -</label>
 					<input type="text" className="form-control" id="catname" placeholder="Enter category name" value={catname} onChange={e=>setCatname(e.target.value)}/><br/>

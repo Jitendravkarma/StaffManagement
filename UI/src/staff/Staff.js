@@ -7,7 +7,7 @@ export default function Staff(props) {
 			<div className="row">
                 {
                 	props.user.map((data)=>(
-                		<div className="round col-lg-4 col-sm-6 my-3 wow fadeInUp" data-wow-delay="0.1s" style={{"minHeight":"450px"}} key={data._id}>
+                		<div className="round col-lg-4 col-sm-6 my-3" data-wow-delay="0.1s" style={{"minHeight":"450px"}} key={data._id}>
 		                    <div className="service-item text-center pt-3" style={{"border":"1px solid","minHeight":"460px"}}>
 		                        <div className="p-0">
 		                            {

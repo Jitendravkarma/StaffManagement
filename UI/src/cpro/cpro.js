@@ -33,9 +33,9 @@ function Cpro() {
     <>
       <div className="container-fluid pt-5">
         <div className="container">
-          <h2>Edit Profile Here!!! </h2>
+          <h2 className="w-50 m-auto mb-3">Edit Profile Here!!! </h2>
           <span style={{"color":"blue"}} >{output}</span>
-          <form>
+          <form className="w-50 m-auto my-2">
             <div className="form-group">
               <label htmlFor="name">Name:</label>
               <input type="text" className="form-control" value={name} onChange={ e => setName(e.target.value) } />
@@ -88,7 +88,8 @@ function Cpro() {
             </div>
 
             <br/>  
-            <button onClick={handleSubmit} type="button" className="btn btn-success">Save</button>
+            <button type="button" className="btn btn-primary w-100" style={{"paddingLeft": "2.5rem", "paddingRight": "2.5rem"}} 
+            onClick={handleSubmit}>Save</button>
           </form>
           <br/>
         </div>

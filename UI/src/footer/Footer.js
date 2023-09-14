@@ -28,7 +28,7 @@ function Foot(props) {
                                 <div className="row gx-5">
                                     <div className="col-lg-4 col-md-6 footer-about">
                                         <div className="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4">
-                                            <Link to="/" className="navbar-brand"><h1 className="m-0 text-white" style={{"fontSize":"32px"}}>VIMALA CONVENT</h1></Link>
+                                            <Link to="/" className="navbar-brand m-0"><h1 className="m-0 text-white" style={{"fontSize":"30px","textAlign":"center"}}>VIMALA CONVENT</h1></Link>
                                             <p className="mt-3 mb-4">Lorem diam sit erat dolor elitr et, diam lorem justo amet clita stet eos sit. Elitr dolor duo lorem, elitr clita ipsum sea. Diam amet erat lorem stet eos. Diam amet et kasd eos duo.</p>
                                         </div>
                                     </div>  

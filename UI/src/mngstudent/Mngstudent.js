@@ -169,7 +169,11 @@ export default function Mngstudent(props) {
 													<td>{data.economics}</td>
 												</>
 											}
+											<td>{data.total}</td>
 											<td>{data.address}</td>
+											<td>
+												<a onClick={()=>{deleteRecord(data._id)}}>Del</a>
+											</td>
 										</>
 									}
 								</tr>

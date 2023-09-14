@@ -79,6 +79,49 @@ function Nav() {
                     </div>
                 )
             }
+            else if (window.location.pathname==="/courses" || window.location.pathname==="/teacherstaff" ||
+                window.location.pathname==="/studentresult" || window.location.pathname==="/topstudent" ||
+                window.location.pathname==="/register" || window.location.pathname==="/login") {
+                setNav(
+                    <div className="container-fluid position-relative p-0">
+                       <nav className="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+                            <Link className="navbar-brand p-0" to="/"><h1 className="m-0">VIMALA CONVENT</h1></Link>
+                            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                                <span className="fa fa-bars"></span>
+                            </button>
+                            <div className="collapse navbar-collapse" id="navbarCollapse">
+                                <div className="navbar-nav ms-auto py-0">
+                                    <Link to="/" className="nav-item nav-link">Home</Link>
+                                    {/*<Link to="/about" className="nav-item nav-link">About</Link>*/}
+                                    <Link to="/courses" className="nav-item nav-link">Courses</Link>
+                                    <Link to="/teacherstaff" className="nav-item nav-link">Teachers Staff</Link>
+                                    <Link to="/studentresult" className="nav-item nav-link">Search Student Result</Link>
+                                    <Link to="/topstudent" className="nav-item nav-link">Top 3</Link>
+                                    {/*<div className="nav-item dropdown">
+                                        <Link data-bs-toggle="dropdown" to="" className="nav-link dropdown-toggle">Pages</Link>
+                                        <div className="dropdown-menu m-0">
+                                            <Link to="/" className="dropdown-item">Pricing Plan</Link>
+                                            <Link to="/" className="dropdown-item">Our features</Link>
+                                        </div>
+                                    </div>*/}
+                                    {/*<Link to="/contact" className="nav-item nav-link">Contact</Link>*/}
+                                    <Link to="/register" className="nav-item nav-link">Register</Link>
+                                    <Link to="/login" className="nav-item nav-link">Login</Link>
+                                </div>
+                            </div>
+                        </nav>
+
+                        <div id="header-carousel" className="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div className="carousel-inner">
+                                <div className="carousel-item active">
+                                    <img className="w-100" src="assets/img/carousel1.webp" alt="img" style={{"height":"100px","objectFit":"cover","objectPosition":"top"}}/>
+                                    <div className="carousel-caption d-flex flex-column align-items-center justify-content-center"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
             else {
                 setNav(
                     <div className="container-fluid position-relative p-0">

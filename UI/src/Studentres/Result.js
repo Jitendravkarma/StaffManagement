@@ -4,6 +4,9 @@ import axios from 'axios';
 import { apistudenturl } from '../apiURL';
 export default function User() {
 	const [student, setStudent] = useState([]);
+	const [dis, setDis] = useState({
+		"display":"none"
+	});
 	const [out, setOut] = useState();
 	const [name, setName] = useState('');
 	const [roll, setRoll] = useState('');
@@ -22,9 +25,15 @@ export default function User() {
 			axios.get(apistudenturl+'fetch?roll='+roll).then((res)=>{
 				setStudent(res.data[0]);
 				setOut("");
+				setRoll("");
+				setDis({
+					"display":"block"
+				});
 			}).catch(()=>{
-				setOut(`${roll} roll number is invalid!`);
-				setRoll('');
+				setOut(`Invalid roll number!`);
+				setDis({
+					"display":"none"
+				});
 			});
 		}
 	}
@@ -42,7 +51,7 @@ export default function User() {
 	              style={{"paddingLeft": "2.5rem", "paddingRight": "2.5rem"}} onClick={handleSubmit}>Search</button>
 	          </div>
 	        </form>
-	        <table cellPadding="5" border="2" align="center" className="table-bordered my-5">
+	        <table cellPadding="5" border="2" align="center" className="table-bordered my-5" style={dis}>
 					<thead>
 						<tr>
 							<th rowSpan="2">Student Roll</th>
@@ -50,7 +59,6 @@ export default function User() {
 							<th rowSpan="2">Student Mobile</th>
 							<th rowSpan="2">Student Gender</th>
 							<th rowSpan="2">Student Class</th>
-							
 							{
 								(student.class === "9th" || student.class === "9th") &&
 								<th colSpan="6">Marks</th>
@@ -62,9 +70,9 @@ export default function User() {
 									<th colSpan="5">Marks</th>
 								</>
 							}
+							<th rowSpan="2">Total Marks</th>
 							<th rowSpan="2">Address</th>
 						</tr>
-						
 						{
 							(student.class==="9th" || student.class==="10th") &&
 							<tr>
@@ -132,6 +140,7 @@ export default function User() {
 								<th>{student.social}</th>
 								<th>{student.science}</th>
 								<th>{student.sanskrit}</th>
+								<th>{student.total}</th>
 								<th>{student.address}</th>
 							</tr>
 						}
@@ -149,6 +158,7 @@ export default function User() {
 								<th>{student.maths}</th>
 								<th>{student.physics}</th>
 								<th>{student.chemistry}</th>
+								<th>{student.total}</th>
 								<th>{student.address}</th>
 							</tr>
 						}
@@ -166,6 +176,7 @@ export default function User() {
 								<th>{student.biology}</th>
 								<th>{student.physics}</th>
 								<th>{student.chemistry}</th>
+								<th>{student.total}</th>
 								<th>{student.address}</th>
 							</tr>
 						}

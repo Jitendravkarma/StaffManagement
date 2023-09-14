@@ -11,25 +11,31 @@ export default function Upload() {
 	const handleChange = (event)=>{
 		setFile(event.target.files[0]);
 	}
-	const handleSubmit = (event)=>{
+	const handleSub = (event)=>{
 		event.preventDefault();
-		var formData = new FormData();
-		formData.append('catnm', email);
-		formData.append('caticon', file);
-		const config = {
-			"content-type":"multipart/form-data"
+		if (file === undefined) {
+			setOut(`Please select an image!`);
 		}
-		axios.post(apicategoryurl+'save', formData, config).then((res)=>{
-			setOut(`Photo uploaded successfully!`);
-		}).catch((er)=>{
-			console.log(er);
-		});
+		else {
+			var formData = new FormData();
+			formData.append('catnm', email);
+			formData.append('caticon', file);
+			const config = {
+				"content-type":"multipart/form-data"
+			}
+			axios.post(apicategoryurl+'save', formData, config).then((res)=>{
+				setOut(`Photo uploaded successfully!`);
+			}).catch((er)=>{
+				console.log(er);
+			});
+		}
 	}
 	return (
 		<div className="contain">
 			<h1>Upload Your Profile Picture Here!</h1>
-			<span style={{"color":"red"}}>{out}</span>
-			<form>
+			
+			<form className="my-4">
+				<span style={{"color":"red"}}>{out}</span>
 				<table className="table table-bordered w-50" cellSpacing="10" cellPadding="10" align="center">
 					<thead>
 						<tr>
@@ -40,9 +46,12 @@ export default function Upload() {
 					</thead>
 					<tbody>
 						<tr>
-							<td><input type="text" value={email} onChange={e=>setEmail(localStorage.getItem("email"))} disabled/></td>
-							<td><input type="file" accept="image/png, image/jpeg, image/jpg" onChange={handleChange}/></td>
-							<td><input type="button" value="Upload" onClick={handleSubmit}/></td>
+							<td><input type="text" className="form-control" value={email} onChange={e=>setEmail(localStorage.getItem("email"))} disabled/></td>
+							<td><input type="file" className="form-control bg-light" accept="image/png, image/jpeg, image/jpg" onChange={handleChange}/></td>
+							<td>
+								<button type="button" className="btn btn-primary" 
+	            				onClick={handleSub}>Upload</button>
+            				</td>
 						</tr>
 					</tbody>
 				</table>
