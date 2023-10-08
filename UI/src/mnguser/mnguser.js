@@ -21,8 +21,8 @@ function Manage() {
             navigate("/manageuser");
         }).catch((err)=>{
             console.log(err);
-        });            
-    }   
+        });
+    }
     else if(s=="verify")
     {
         let updateDetails={"condition_obj":{"_id":_id},"set_condition":{"status":1}};

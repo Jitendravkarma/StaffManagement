@@ -35,14 +35,6 @@ function App() {
 	const [user, setUser] = useState([]);
 	const [img, setImg] = useState([]);
 	const [student, setStudent] = useState([]);
-	let total = 0;
-	let ave = 0;
-	const marks = student.map((data)=>{
-		if (data.roll === 2 && data.class === "9th") {
-			total += Number(data.hindi) + Number(data.english) + Number(data.maths) + Number(data.social) + Number(data.science) + Number(data.sanskrit);
-			ave = total / 6;
-		}
-	});
 	useEffect(()=>{
 		axios.get(apiuserurl+'fetch?role=user').then((res)=>{
 			setUser(res.data);
@@ -60,12 +52,30 @@ function App() {
 			console.log('Response not get');
 		});
 	});
+	const [mode, setMode] = useState({
+		'backgroundColor':'white',
+		'color':'black'
+	});
+	const toggle = ()=>{
+		if (mode.backgroundColor=="black") {
+			setMode({
+					'backgroundColor':'white',
+					'color':'black'
+			});
+		}
+		else {
+			setMode({
+					'backgroundColor':'black',
+					'color':'white'
+			});
+		}
+	}
   return (
     <div>
-	    <Header add={add} phone={phone} email={email}/>
+	    <Header add={add} phone={phone} email={email} onclick={toggle}/>
 	    <Nav/>
 	    <Routes>
-	    	<Route path="/" element={<Home/>}></Route>
+	    	<Route path="/" element={<Home mode={mode}/>}></Route>
 	    	<Route path="/about" element={<About/>}></Route>
 	    	<Route path="/courses" element={<Course/>}></Route>
 	    	<Route path="/contact" element={<Contact add={add} phone={phone} email={email}/>}></Route>
@@ -84,7 +94,7 @@ function App() {
 	    		<Route path="/studentresult" element={<Result/>}></Route>
 	    	<Route path="/user" element={<User img={img}/>}></Route>
 	    		<Route path="/studentregistration" element={<Studentregi/>}></Route>
-	    		<Route path="/topstudent" element={<TopStudent student={student} ave={ave}/>}></Route>
+	    		<Route path="/topstudent" element={<TopStudent student={student}/>}></Route>
 	    		<Route path="/managestudents" element={<ManageStudent student={student}/>}></Route>
 	    		<Route path="/uploadphoto" element={<Upload/>}></Route>
 	    </Routes>

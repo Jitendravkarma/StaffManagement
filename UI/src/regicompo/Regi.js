@@ -290,7 +290,7 @@ function Regi() {
                                     <input className="form-control bg-light border-0" value={add} placeholder="Your Address" onChange={e=>setAdd(e.target.value)} style={namestyle}/>
                                     <span className="error">{ad}</span>
                                 </div>
-                                <div className="col-3">
+                                <div className="col-3 col-xs-4 col-sm-5" id="captcha">
                                     <label className="text-white p-2" style={{"backgroundColor":"#AD2E2E"}}>{val1} + {val2} = ?</label>
                                     <span onClick={refCap}><i className="mx-2 fa-solid text-white fa-arrows-rotate"></i></span>
                                 </div>
